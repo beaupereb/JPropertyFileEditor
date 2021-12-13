@@ -5,6 +5,7 @@ public class XmlProperty<T> implements Comparable{
 	protected String name;
 	protected T value;
 	protected T defaultValue;
+	protected String group;
 	
 	public XmlProperty(String name, T defaultValue, T value){
 		this.name = name;
@@ -46,6 +47,14 @@ public class XmlProperty<T> implements Comparable{
 
 	public void setDefaultValue(T defaultValue) {
 		this.defaultValue = defaultValue;
+	}
+
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
 	}
 	
 	

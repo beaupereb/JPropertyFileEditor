@@ -221,7 +221,36 @@ public class PropertiesXmlFileManager {
 	}
 	
 	private void parseIntegerPropertyXmlNode(Node node) {
+		String propertyName = "";
+		int propertyDefaultValue = 0;
+		int propertyValue = 0;
+		boolean parsingError = false;
 		
+		NodeList nodeList = node.getChildNodes();
+		for (int i = 0; i < nodeList.getLength(); i++) {
+        	Node childNode = nodeList.item(i);
+        	if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+        		String childNodeName = childNode.getNodeName();
+        		if(childNodeName.equals(NAME_NODE_NAME)) {
+        			propertyName = childNode.getFirstChild().getNodeValue();
+        		} else if(childNodeName.equals(DEFAULT_NODE_NAME)) {
+        			propertyDefaultValue = Integer.parseInt(childNode.getFirstChild().getNodeValue());
+        		}else if(childNodeName.equals(VALUE_NODE_NAME)) {
+        			propertyValue = Integer.parseInt(childNode.getFirstChild().getNodeValue());
+        		} else {
+        			
+        		}	
+        	} else {
+        		
+        	}
+		}
+		if(parsingError == false) {
+			LOGGER.info("Adding Integer property with : name=" +propertyName + " - default Value=" +propertyDefaultValue + " - value=" + propertyValue);
+			XmlProperty<Integer> newProperty = new XmlProperty<Integer>(propertyName, propertyDefaultValue, propertyValue);
+			this.xmlProperties.add(newProperty);
+		} else {
+			
+		}
 	}
 
 	

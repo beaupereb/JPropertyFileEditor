@@ -1,0 +1,93 @@
+.root{
+    -fx-font-size: 11pt;
+    -fx-text-fill: #EEEEEE;
+    -fx-background-color:  #222222;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+.menu-bar {
+    -fx-background-color:  #222222;
+    -fx-padding: 0px;
+}
+
+
+.menu {
+    -fx-background-color:  #222222;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+.menu:hover {
+    -fx-background-color:  #444444;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+.menu:hover {
+    -fx-background-color:  #444444;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+
+.menu-bar .label{
+    -fx-font-size: 11pt;
+    -fx-text-fill: #EEEEEE;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+
+.context-menu {
+    -fx-font-size: 11pt;
+    -fx-text-fill: #EEEEEE;
+    -fx-background-color:  #666666;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+    -fx-padding: 0 0 0 10;
+}
+
+.menu-item {
+    -fx-background-color:  #666666;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+.menu-item:hover {
+    -fx-background-color:  #888888;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+.menu-item .label {
+    -fx-font-size: 11pt;
+    -fx-text-fill: #EEEEEE;
+    -fx-background-color:  transparent;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+
+.text-area {
+    text-area-background: #888888 ;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-radius: 0 0 0 0, 0, 0, 0;
+}
+
+.text-area .content {
+    -fx-background-color: transparent;
+    -fx-text-fill: #EEEEEE;
+}
+
+
+.button{
+    
+
+}
+
+.button:hover {
+    -fx-background-color:  #555555;
+
+}

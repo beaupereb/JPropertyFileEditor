@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+%t : permet d'injecter le nom du thread ayant produit le log.
+%-5p : permet d'injecter le niveau (level) du log. Dans notre cas, il occupera cinq caractères et sera aligné par la gauche.
+%-60c : permet d'injecter le nom du logger ayant généré ce log (dans notre cas, le nom pleinement qualifié de la classe).
+%m : permet d'injecter le message du log.
+%F : permet d'injecter le nom du fichier Java contenant la ligne de code ayant produit le log.
+%L : permet d'injecter le numéro de ligne de code, dans le fichier considéré, ayant produit le log.
+%n : tout simplement pour injecter un retour à la ligne en fin de log. 
+
+
+Vous pouvez aussi générer des messages en y injectant les valeurs de vos variables ou encore les informations des exceptions constatées. 
+Dans le cas où vous souhaitez injecter des valeurs, c'est la séquence {} qui permet de définir les points d'injections.
+
+-->
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config" status="WARN">
+
+    <Appenders>
+            
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} | %-6p | %c | %m %n" />
+        </Console>
+        
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="stdout" />
+        </Root> 
+    </Loggers>
+
+</Configuration>

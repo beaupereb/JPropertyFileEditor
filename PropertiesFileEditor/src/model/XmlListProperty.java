@@ -2,23 +2,25 @@ package model;
 
 import java.util.List;
 
-public class XmlListProperty<T> extends XmlProperty{
+import org.w3c.dom.Node;
+
+import properties.XmlPropertyParsingException;
+
+public class XmlListProperty extends XmlProperty{
 
 	
-	private List<T> possibleValues;
+	private List<String> possibleValues;
 	
-	public XmlListProperty(String name, Object defaultValue, Object value, List<T> possibleValues) {
-		super(name, defaultValue, value);
-		this.possibleValues = possibleValues;
+
+	public XmlListProperty(Node propertyNode) throws XmlPropertyParsingException {
+		super(propertyNode);
 	}
 
-	
-
-	public List<T> getPossibleValues() {
+	public List<String> getPossibleValues() {
 		return possibleValues;
 	}
 
-	public void setPossibleValues(List<T> possibleValues) {
+	public void setPossibleValues(List<String> possibleValues) {
 		this.possibleValues = possibleValues;
 	}
 	

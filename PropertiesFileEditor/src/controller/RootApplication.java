@@ -47,7 +47,7 @@ public class RootApplication extends Application {
 	
 	Properties properties = new Properties();;
 	CommandInvoker commandInvoker = CommandInvoker.getInstance();
-	PropertiesXmlFileManager propertiesXmlFileManager = new PropertiesXmlFileManager();
+	XmlPropertyFileManager propertiesXmlFileManager = new XmlPropertyFileManager();
 
 	//////////SINGLETON PATTERN //////////
 

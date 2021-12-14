@@ -1,0 +1,86 @@
+package properties;
+
+import java.util.ArrayList;
+
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public abstract class XmlPropertyUtils {
+
+	public static final String PROPERTY_NODE_NAME = "property";
+	public static final String NAME_NODE_NAME = "name";
+	public static final String VALUE_NODE_NAME = "value";
+	public static final String DEFAULT_VALUE_NODE_NAME = "default";
+	public static final String DESCRIPTION_NODE_NAME = "description";
+	
+	public static final String POSSIBLE_VALUES_NODE_NAME = "possibleValues";
+	public static final String ITEM_NODE_NAME = "item";
+	
+	public static final String GROUP_ATTRIBUTE_NAME = "group";
+	public static final String TYPE_ATTRIBUTE_NAME = "type";
+	
+	public static final String TYPE_STRING_NAME = "String";
+	public static final String TYPE_INTEGER_NAME = "Integer";
+	public static final String TYPE_FLOAT_NAME = "Float";
+	public static final String TYPE_BOOLEAN_NAME = "Boolean";
+	
+	
+	
+	////////// PARSING METHODS //////////
+	
+	public static String parseChildNode(Node propertyNode, String wantedNodeName) {
+		String result = "";
+		NodeList nodeList = propertyNode.getChildNodes();
+		for (int i = 0; i < nodeList.getLength(); i++) {
+			Node childNode = nodeList.item(i);
+			String childNodeName = childNode.getNodeName();
+    		if(childNodeName.equals(wantedNodeName)) {
+    			result = childNode.getFirstChild().getNodeValue();
+    		}
+		}
+		return result;
+	}
+	
+	public static String parseAttribute(Node propertyNode, String wantedAttributeName){
+		String result = "";
+		NamedNodeMap attributes = propertyNode.getAttributes();
+		result = attributes.getNamedItem(wantedAttributeName).getNodeValue();
+		return result;
+	}
+	
+	public static ArrayList<String> parseListNode(Node node) {
+		ArrayList<String> propertyPossibleValues = new ArrayList<>();
+		
+		NodeList nodeList = node.getChildNodes();
+		for (int i = 0; i < nodeList.getLength(); i++) {
+        	Node childNode = nodeList.item(i);
+        	if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+        		String childNodeName = childNode.getNodeName();
+        		if(childNodeName.equals(NAME_NODE_NAME)) {
+        		} else if(childNodeName.equals(VALUE_NODE_NAME)) {
+        			} else if (childNodeName.equals(POSSIBLE_VALUES_NODE_NAME)) {
+        			NodeList possibleValuesNodeList = childNode.getChildNodes();
+        			for (int y = 0; y < possibleValuesNodeList.getLength(); y++) {
+        				Node possibleValueNode = possibleValuesNodeList.item(y);
+        				if (possibleValueNode.getNodeType() == Node.ELEMENT_NODE) {
+        					propertyPossibleValues.add((possibleValueNode.getFirstChild().getNodeValue()));
+        				} else {
+        					
+        				}
+        			}
+        		} else {
+        			
+        		}	
+        	} else {
+        		
+        	}
+		}
+		return propertyPossibleValues;
+	}
+	
+	private void parseIntegerPropertyXmlNode(Node node) {
+		
+	}
+	
+}

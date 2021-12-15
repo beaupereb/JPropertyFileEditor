@@ -43,7 +43,10 @@ public class XmlStringListProperty extends XmlListProperty{
 		return stringBuilder.toString();
 	}
 
-
+	@Override
+	public String getStringValue() {
+		return "" +this.possibleValues.get(this.getValue());
+	}
 	
 	//////////GETTERS AND SETTERS //////////
 

@@ -31,11 +31,11 @@ public class XmlPropertyFileManager {
 	
 	private static final Logger LOGGER = LogManager.getLogger(XmlPropertyFileManager.class);
 	
-	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder documentBuilder;
-	Document document;
+	private DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	private DocumentBuilder documentBuilder;
+	private Document document;
 	
-	private TreeSet<XmlProperty> xmlProperties = new TreeSet<>();
+	private ArrayList<XmlProperty> xmlProperties = new ArrayList<>();
 
 	
 	public XmlPropertyFileManager() {
@@ -66,7 +66,8 @@ public class XmlPropertyFileManager {
 	        			} else if (propertyType.equals(XmlPropertyUtils.TYPE_BOOLEAN_NAME)) {
 	        				this.xmlProperties.add(new XmlBooleanProperty(propertyNode));
 	        			} else if (propertyType.equals(XmlPropertyUtils.TYPE_STRING_LIST_NAME)) {
-	        				this.xmlProperties.add(new XmlStringListProperty(propertyNode));
+	        				XmlProperty newProp = new XmlStringListProperty(propertyNode);
+	        				this.xmlProperties.add(newProp);
 	        			}
 	        		} 
 	        	}
@@ -78,5 +79,15 @@ public class XmlPropertyFileManager {
 		} catch (XmlPropertyParsingException e) {
 			e.printStackTrace();
 		}	
+	}
+	
+	////////// GETTERS AND SETTERS //////////
+	
+	public ArrayList<XmlProperty> getXmlProperties() {
+		return xmlProperties;
+	}
+
+	public void setXmlProperties(ArrayList<XmlProperty> xmlProperties) {
+		this.xmlProperties = xmlProperties;
 	}
 }

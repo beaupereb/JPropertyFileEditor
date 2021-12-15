@@ -36,6 +36,11 @@ public class XmlIntegerProperty extends XmlProperty{
 		return stringBuilder.toString();
 	}
 	
+	@Override
+	public String getStringValue() {
+		return "" +this.value;
+	}
+	
 	//////////GETTERS AND SETTERS //////////
 		
 	public Integer getValue() {

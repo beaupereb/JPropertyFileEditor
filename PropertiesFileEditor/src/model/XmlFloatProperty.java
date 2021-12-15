@@ -37,6 +37,11 @@ public class XmlFloatProperty extends XmlProperty{
 		return stringBuilder.toString();
 	}
 	
+	@Override
+	public String getStringValue() {
+		return "" +this.value;
+	}
+	
 	//////////GETTERS AND SETTERS //////////
 		
 	public Float getValue() {

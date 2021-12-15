@@ -37,6 +37,11 @@ public class XmlBooleanProperty extends XmlProperty{
 		return stringBuilder.toString();
 	}
 	
+	@Override
+	public String getStringValue() {
+		return "" +this.value;
+	}
+	
 	//////////GETTERS AND SETTERS //////////
 		
 	public Boolean getValue() {
@@ -57,4 +62,5 @@ public class XmlBooleanProperty extends XmlProperty{
 	public void setDefaultValue(Boolean defaultValue) {
 		this.defaultValue = defaultValue;
 	}
+
 }

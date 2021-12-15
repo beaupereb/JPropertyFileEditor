@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import command.CommandInvoker;
+import command.GeneratePropertyFileCommand;
 import command.OpenFileChooserCommand;
 import command.TestCommand;
 import javafx.scene.control.Button;
@@ -22,6 +23,7 @@ public class RootMenuBar extends MenuBar{
     // Create menus
     Menu fileMenu = new Menu("File");
     Menu editMenu = new Menu("Edit");
+    Menu toolsMenu = new Menu("Tools");
     Menu helpMenu = new Menu("Help");
     
     // Create MenuItems
@@ -31,6 +33,8 @@ public class RootMenuBar extends MenuBar{
    
     MenuItem copyItem = new MenuItem("Copy");
     MenuItem pasteItem = new MenuItem("Paste");
+    
+    MenuItem generatePropertyFileItem = new MenuItem("Generate property file");
 
 	
 	//////////SINGLETON PATTERN //////////
@@ -40,14 +44,18 @@ public class RootMenuBar extends MenuBar{
 		
 		 this.fileMenu.getItems().addAll(this.newItem, this.openFileItem, this.exitItem);
 		 this.editMenu.getItems().addAll(this.copyItem, this.pasteItem);
-		 
-		 this.getMenus().addAll(this.fileMenu, this.editMenu, this.helpMenu);
+		 this.toolsMenu.getItems().addAll(this.generatePropertyFileItem);
+		 this.getMenus().addAll(this.fileMenu, this.editMenu, this.toolsMenu, this.helpMenu);
 	       
 		
 
 		 openFileItem.setOnAction(actionEvent -> {
 			commandInvoker.executeCommand(new OpenFileChooserCommand());
 		});
+		 
+		 generatePropertyFileItem.setOnAction(actionEvent -> {
+				commandInvoker.executeCommand(new GeneratePropertyFileCommand());
+			});
 	}
 	
 	public static RootMenuBar getInstance() {

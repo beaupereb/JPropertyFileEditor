@@ -37,6 +37,8 @@ public abstract class XmlProperty implements Comparable {
 		return 0;
 	}
 	
+	public abstract String getStringValue();
+	
 	////////// GETTERS AND SETTERS //////////
 	
 	public String getName() {

@@ -6,7 +6,7 @@ import org.w3c.dom.Node;
 
 import properties.XmlPropertyParsingException;
 
-public class XmlListProperty extends XmlProperty{
+public abstract class XmlListProperty extends XmlProperty{
 
 	
 	private List<String> possibleValues;
@@ -23,6 +23,7 @@ public class XmlListProperty extends XmlProperty{
 	public void setPossibleValues(List<String> possibleValues) {
 		this.possibleValues = possibleValues;
 	}
+	
 	
 	
 }

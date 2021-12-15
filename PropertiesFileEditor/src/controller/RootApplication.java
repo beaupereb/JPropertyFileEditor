@@ -45,9 +45,9 @@ public class RootApplication extends Application {
 	private PropertiesScene propertiesScene;
 
 	
-	Properties properties = new Properties();;
-	CommandInvoker commandInvoker = CommandInvoker.getInstance();
-	XmlPropertyFileManager propertiesXmlFileManager = new XmlPropertyFileManager();
+	private Properties properties = new Properties();;
+	private CommandInvoker commandInvoker = CommandInvoker.getInstance();
+	private XmlPropertyFileManager propertiesXmlFileManager = new XmlPropertyFileManager();
 
 	//////////SINGLETON PATTERN //////////
 
@@ -81,7 +81,9 @@ public class RootApplication extends Application {
 		fileChooser.setInitialFileName("test.properties");
 		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Properties Files", "*.properties"));
 		File selectedFile = fileChooser.showOpenDialog(this.primaryStage);
-		commandInvoker.executeCommand(new LoadPropertiesFileCommand(selectedFile));
+		if(selectedFile != null) {
+			commandInvoker.executeCommand(new LoadPropertiesFileCommand(selectedFile));
+		}
 	}
 
 	public void loadPropertiesFile(File file) {
@@ -100,8 +102,21 @@ public class RootApplication extends Application {
 		}
 	}
 
+
+	
+	////////// GETTERS AND SETTERS //////////
+	
 	public List<PropertiesListener> getPropertiesListeners() {
 		return this.propertiesListeners;
 	}
+
+	public XmlPropertyFileManager getPropertiesXmlFileManager() {
+		return propertiesXmlFileManager;
+	}
+
+	public void setPropertiesXmlFileManager(XmlPropertyFileManager propertiesXmlFileManager) {
+		this.propertiesXmlFileManager = propertiesXmlFileManager;
+	}
+	
 }
 

@@ -21,6 +21,7 @@ import model.XmlFloatProperty;
 import model.XmlIntegerProperty;
 import model.XmlListProperty;
 import model.XmlProperty;
+import model.XmlStringListProperty;
 import model.XmlStringProperty;
 import properties.XmlPropertyParsingException;
 import properties.XmlPropertyUtils;
@@ -64,6 +65,8 @@ public class XmlPropertyFileManager {
 	        				this.xmlProperties.add(new XmlFloatProperty(propertyNode));
 	        			} else if (propertyType.equals(XmlPropertyUtils.TYPE_BOOLEAN_NAME)) {
 	        				this.xmlProperties.add(new XmlBooleanProperty(propertyNode));
+	        			} else if (propertyType.equals(XmlPropertyUtils.TYPE_STRING_LIST_NAME)) {
+	        				this.xmlProperties.add(new XmlStringListProperty(propertyNode));
 	        			}
 	        		} 
 	        	}

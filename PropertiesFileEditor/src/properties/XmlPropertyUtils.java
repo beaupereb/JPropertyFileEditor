@@ -24,6 +24,7 @@ public abstract class XmlPropertyUtils {
 	public static final String TYPE_INTEGER_NAME = "Integer";
 	public static final String TYPE_FLOAT_NAME = "Float";
 	public static final String TYPE_BOOLEAN_NAME = "Boolean";
+	public static final String TYPE_STRING_LIST_NAME = "StringList";
 	
 	
 	
@@ -49,22 +50,19 @@ public abstract class XmlPropertyUtils {
 		return result;
 	}
 	
-	public static ArrayList<String> parseListNode(Node node) {
-		ArrayList<String> propertyPossibleValues = new ArrayList<>();
-		
+	public static ArrayList<String> parseListNode(Node node, String wantedListNodeName) {
+		ArrayList<String> result = new ArrayList<>();
 		NodeList nodeList = node.getChildNodes();
 		for (int i = 0; i < nodeList.getLength(); i++) {
         	Node childNode = nodeList.item(i);
         	if (childNode.getNodeType() == Node.ELEMENT_NODE) {
         		String childNodeName = childNode.getNodeName();
-        		if(childNodeName.equals(NAME_NODE_NAME)) {
-        		} else if(childNodeName.equals(VALUE_NODE_NAME)) {
-        			} else if (childNodeName.equals(POSSIBLE_VALUES_NODE_NAME)) {
+        		if (childNodeName.equals(wantedListNodeName)) {
         			NodeList possibleValuesNodeList = childNode.getChildNodes();
         			for (int y = 0; y < possibleValuesNodeList.getLength(); y++) {
         				Node possibleValueNode = possibleValuesNodeList.item(y);
         				if (possibleValueNode.getNodeType() == Node.ELEMENT_NODE) {
-        					propertyPossibleValues.add((possibleValueNode.getFirstChild().getNodeValue()));
+        					result.add((possibleValueNode.getFirstChild().getNodeValue()));
         				} else {
         					
         				}
@@ -76,11 +74,7 @@ public abstract class XmlPropertyUtils {
         		
         	}
 		}
-		return propertyPossibleValues;
-	}
-	
-	private void parseIntegerPropertyXmlNode(Node node) {
-		
+		return result;
 	}
 	
 }

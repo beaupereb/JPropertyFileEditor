@@ -39,6 +39,7 @@ public class XmlStringProperty extends XmlProperty{
 		stringBuilder.append("{Default value=" +this.getDefaultValue() +"}");
 		stringBuilder.append("{Group=" +this.getGroup() +"}");
 		stringBuilder.append("{Description=" +this.getDescription() +"}");
+		
 		return stringBuilder.toString();
 	}
 

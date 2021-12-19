@@ -1,10 +1,17 @@
 package model;
 
-import org.w3c.dom.*;
-
+import org.w3c.dom.Node;
 import properties.XmlPropertyParsingException;
 import properties.XmlPropertyUtils;
 
+
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public abstract class XmlProperty implements Comparable {
 
 	protected String type;

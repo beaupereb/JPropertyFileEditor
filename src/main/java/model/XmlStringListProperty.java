@@ -1,14 +1,20 @@
 package model;
 
-import java.util.ArrayList;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
-
 import properties.XmlPropertyParsingException;
 import properties.XmlPropertyUtils;
 
+import java.util.ArrayList;
+
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class XmlStringListProperty extends XmlListProperty{
 	
 	private static final Logger LOGGER = LogManager.getLogger(XmlStringListProperty.class);

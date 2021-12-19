@@ -1,5 +1,13 @@
 package command;
 
+
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class TestCommand extends Command {
 
 	@Override

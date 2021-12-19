@@ -1,21 +1,24 @@
 package views;
 
-import java.io.File;
-import java.util.Properties;
-
 import controller.RootApplication;
 import javafx.application.Platform;
-import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import properties.PropertiesListener;
 
+import java.io.File;
+import java.util.Properties;
+
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class PropertiesScene extends Scene implements PropertiesListener {
 
 	private BorderPane borderPane;

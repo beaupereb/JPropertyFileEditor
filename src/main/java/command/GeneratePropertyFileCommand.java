@@ -1,18 +1,23 @@
 package command;
 
+import controller.RootApplication;
+import model.XmlProperty;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import controller.RootApplication;
-import model.XmlProperty;
-import views.RootMenuBar;
-
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class GeneratePropertyFileCommand extends Command {
 
 	private static final Logger LOGGER = LogManager.getLogger(GeneratePropertyFileCommand.class);

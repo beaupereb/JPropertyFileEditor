@@ -1,8 +1,15 @@
 package command;
 
 import controller.RootApplication;
-import javafx.stage.FileChooser;
 
+
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class OpenFileChooserCommand extends Command {
 
 	@Override

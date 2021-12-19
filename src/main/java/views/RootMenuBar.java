@@ -1,18 +1,21 @@
 package views;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import command.CommandInvoker;
 import command.GeneratePropertyFileCommand;
 import command.OpenFileChooserCommand;
-import command.TestCommand;
-import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.ToolBar;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class RootMenuBar extends MenuBar{
 	
 	private static final Logger LOGGER = LogManager.getLogger(RootMenuBar.class);

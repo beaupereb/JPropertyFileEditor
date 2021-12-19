@@ -3,10 +3,17 @@ package model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
-
 import properties.XmlPropertyParsingException;
 import properties.XmlPropertyUtils;
 
+
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class XmlIntegerProperty extends XmlProperty{
 	
 	private static final Logger LOGGER = LogManager.getLogger(XmlIntegerProperty.class);

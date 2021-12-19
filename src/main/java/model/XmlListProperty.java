@@ -1,11 +1,18 @@
 package model;
 
-import java.util.List;
-
 import org.w3c.dom.Node;
-
 import properties.XmlPropertyParsingException;
 
+import java.util.List;
+
+
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public abstract class XmlListProperty extends XmlProperty{
 
 	

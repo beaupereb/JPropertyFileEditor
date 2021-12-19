@@ -1,9 +1,16 @@
 package command;
 
-import java.io.File;
-
 import controller.RootApplication;
 
+import java.io.File;
+
+/**
+ * //TODO Write javadoc
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class LoadPropertiesFileCommand extends Command {
 
 	private File file;

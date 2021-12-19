@@ -1,36 +1,24 @@
 package controller;
 
+import command.CommandInvoker;
+import command.LoadPropertiesFileCommand;
+import javafx.application.Application;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import properties.PropertiesListener;
+import views.PropertiesScene;
+import views.RootMenuBar;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.Scanner;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import command.CommandInvoker;
-import command.CommandListener;
-import command.LoadPropertiesFileCommand;
-import command.OpenFileChooserCommand;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToolBar;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import properties.PropertiesListener;
-import views.RootMenuBar;
-import views.PropertiesScene;
 
 /**
  * Starting point of the application. It's the main controller in the MVC pattern.

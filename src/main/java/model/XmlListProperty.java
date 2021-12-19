@@ -16,6 +16,22 @@ public abstract class XmlListProperty extends XmlProperty{
 		super(propertyNode);
 	}
 
+
+
+	//////////OVERRIDE METHODS //////////
+
+	@Override
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(super.toString());
+		stringBuilder.append( "{");
+		this.getPossibleValues().forEach(e -> stringBuilder.append(e+" ;"));
+		stringBuilder.append( "}");
+		return stringBuilder.toString();
+	}
+
+	////////// GETTERS AND SETTERS //////////
+
 	public List<String> getPossibleValues() {
 		return possibleValues;
 	}
@@ -23,7 +39,5 @@ public abstract class XmlListProperty extends XmlProperty{
 	public void setPossibleValues(List<String> possibleValues) {
 		this.possibleValues = possibleValues;
 	}
-	
-	
 	
 }

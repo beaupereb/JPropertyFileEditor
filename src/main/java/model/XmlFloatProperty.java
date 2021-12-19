@@ -16,32 +16,25 @@ public class XmlFloatProperty extends XmlProperty{
 
 	public XmlFloatProperty(Node propertyNode) throws XmlPropertyParsingException {
 		super(propertyNode);
+		this.type = XmlPropertyUtils.TYPE_FLOAT_NAME;
 		this.value = Float.parseFloat(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.VALUE_NODE_NAME));
 		this.defaultValue = Float.parseFloat(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DEFAULT_VALUE_NODE_NAME));
-	
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
 
 	
 	////////// OVERRIDE METHODS //////////
-	
-	@Override
-	public String toString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("{Type=" +XmlPropertyUtils.TYPE_FLOAT_NAME +"}");
-		stringBuilder.append("{Name=" +this.getName() +"}");
-		stringBuilder.append("{Value=" +this.getValue() +"}");
-		stringBuilder.append("{Default value=" +this.getDefaultValue() +"}");
-		stringBuilder.append("{Group=" +this.getGroup() +"}");
-		stringBuilder.append("{Description=" +this.getDescription() +"}");
-		return stringBuilder.toString();
-	}
-	
+
 	@Override
 	public String getStringValue() {
-		return "" +this.value;
+		return "" +this.getValue();
 	}
-	
+
+	@Override
+	public String getStringDefaultValue() {
+		return "" +this.getDefaultValue();
+	}
+
 	//////////GETTERS AND SETTERS //////////
 		
 	public Float getValue() {

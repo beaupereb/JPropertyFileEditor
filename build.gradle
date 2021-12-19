@@ -27,3 +27,10 @@ javafx {
     version = "17"
     modules = [ 'javafx.controls' ]
 }
+
+task javadocs(type: Javadoc) {
+    source = sourceSets.main.java.srcDirs
+    destinationDir = reporting.file("javadoc")
+    classpath = sourceSets.main.runtimeClasspath
+    exclude '**/R.html', '**/R.*.html', '**/index.html'
+}

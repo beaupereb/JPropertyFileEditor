@@ -17,7 +17,7 @@ public abstract class XmlPropertyUtils {
 	public static final String POSSIBLE_VALUES_NODE_NAME = "possibleValues";
 	public static final String ITEM_NODE_NAME = "item";
 	
-	public static final String GROUP_ATTRIBUTE_NAME = "group";
+	public static final String SECTION_ATTRIBUTE_NAME = "section";
 	public static final String TYPE_ATTRIBUTE_NAME = "type";
 	
 	public static final String TYPE_STRING_NAME = "String";
@@ -61,17 +61,11 @@ public abstract class XmlPropertyUtils {
         			NodeList possibleValuesNodeList = childNode.getChildNodes();
         			for (int y = 0; y < possibleValuesNodeList.getLength(); y++) {
         				Node possibleValueNode = possibleValuesNodeList.item(y);
-        				if (possibleValueNode.getNodeType() == Node.ELEMENT_NODE) {
+        				if (possibleValueNode.getNodeType() == Node.ELEMENT_NODE && possibleValueNode.getNodeName().equals(ITEM_NODE_NAME)) {
         					result.add((possibleValueNode.getFirstChild().getNodeValue()));
-        				} else {
-        					
         				}
         			}
-        		} else {
-        			
-        		}	
-        	} else {
-        		
+        		}
         	}
 		}
 		return result;

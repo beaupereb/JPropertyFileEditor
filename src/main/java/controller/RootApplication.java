@@ -32,6 +32,13 @@ import properties.PropertiesListener;
 import views.RootMenuBar;
 import views.PropertiesScene;
 
+/**
+ * Starting point of the application. It's the main controller in the MVC pattern.
+ *
+ * @author  BBE
+ * @version 1.0
+ * @since   2021
+ */
 public class RootApplication extends Application {
 
 	private static final Logger LOGGER = LogManager.getLogger(RootMenuBar.class);
@@ -66,7 +73,7 @@ public class RootApplication extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("DesignPatherns");
+		this.primaryStage.setTitle("DesignPatterns");
 		this.borderPane.setTop(this.rootToolBar);
 		this.propertiesScene = new PropertiesScene(borderPane, 700, 400);
 		this.primaryStage.setScene(propertiesScene);
@@ -77,7 +84,7 @@ public class RootApplication extends Application {
 
 	public void openFileChooser() {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setInitialDirectory(new File("D:\\Documents\\eclipse workspace\\PropertiesFileEditor\\src\\resources"));
+		fileChooser.setInitialDirectory(new File("src/main/resources"));
 		fileChooser.setInitialFileName("test.properties");
 		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Properties Files", "*.properties"));
 		File selectedFile = fileChooser.showOpenDialog(this.primaryStage);

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
-	<property type="Boolean" group="A">
+	<property type="Boolean" section="A">
 		<name>peroperty1</name>
 		<default>false</default>
 		<value>true</value>
 	</property>
-	<property type="StringList" group="A">
+	<property type="StringList" section="A">
 		<name>peroperty2</name>
 		<default>0</default>
 		<value>0</value>
@@ -15,12 +15,12 @@
 			<item>item 3</item>
 		</possibleValues>
 	</property>
-	<property type="String" group="A">
+	<property type="String" section="A">
 		<name>property3</name>
 		<default>propertyTest</default>
 		<value>propertyTest</value>
 	</property>
-	<property type="Integer" group="A">
+	<property type="Integer" section="A">
 		<name>property4</name>
 		<default>250</default>
 		<value>200</value>

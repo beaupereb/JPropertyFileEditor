@@ -19,33 +19,23 @@ public class XmlStringListProperty extends XmlListProperty{
 	
 	public XmlStringListProperty(Node propertyNode) throws XmlPropertyParsingException {
 		super(propertyNode);
+		this.type = XmlPropertyUtils.TYPE_STRING_LIST_NAME;
 		this.value = Integer.parseInt(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.VALUE_NODE_NAME));
 		this.defaultValue = Integer.parseInt(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DEFAULT_VALUE_NODE_NAME));
 		this.possibleValues = XmlPropertyUtils.parseListNode(propertyNode, XmlPropertyUtils.POSSIBLE_VALUES_NODE_NAME);
-		
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
 	
 	//////////OVERRIDE METHODS //////////
-		
-	@Override
-	public String toString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("{Type=" +XmlPropertyUtils.TYPE_STRING_NAME +"}");
-		stringBuilder.append("{Name=" +this.getName() +"}");
-		stringBuilder.append("{Value=" +this.possibleValues.get(this.getValue()) +"}");
-		stringBuilder.append("{Default value=" +this.possibleValues.get(this.getDefaultValue()) +"}");
-		stringBuilder.append("{Group=" +this.getGroup() +"}");
-		stringBuilder.append("{Description=" +this.getDescription() +"}");
-		stringBuilder.append("{Possible values=" +this.getDescription());
-		possibleValues.forEach(e -> stringBuilder.append(e+" ;"));
-		stringBuilder.append( "}");
-		return stringBuilder.toString();
-	}
 
 	@Override
 	public String getStringValue() {
-		return "" +this.possibleValues.get(this.getValue());
+		return this.possibleValues.get(this.getValue());
+	}
+
+	@Override
+	public String getStringDefaultValue() {
+		return this.possibleValues.get(this.getDefaultValue());
 	}
 	
 	//////////GETTERS AND SETTERS //////////

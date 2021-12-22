@@ -49,7 +49,9 @@ public class XmlIntegerProperty extends XmlProperty{
 	
 	
 	public void setValue(Integer value) {
+		Integer oldValue = this.value;
 		this.value = value;
+		this.propertyChangeSupport.firePropertyChange("value",oldValue,value);
 	}
 	
 	

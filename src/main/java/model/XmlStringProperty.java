@@ -54,7 +54,9 @@ public class XmlStringProperty extends XmlProperty{
 
 
 	public void setValue(String value) {
+		String oldValue = this.value;
 		this.value = value;
+		this.propertyChangeSupport.firePropertyChange("value",oldValue,value);
 	}
 
 

@@ -1,5 +1,7 @@
 package views;
 
+import model.XmlProperty;
+
 /**
  * //TODO Write javadoc
  *
@@ -9,8 +11,8 @@ package views;
  */
 public class BooleanPropertyNode extends PropertyNode {
 
-	public BooleanPropertyNode(String key, String value) {
-		super(key, value);
+	public BooleanPropertyNode(XmlProperty xmlProperty) {
+		super(xmlProperty);
 
 	}
 

@@ -21,7 +21,7 @@ public class XmlStringListProperty extends XmlListProperty{
 
 	private int value;
 	private int defaultValue;
-	private ArrayList<String> possibleValues = new ArrayList<>();
+	private ArrayList<String> possibleValues;
 	
 	public XmlStringListProperty(Node propertyNode) throws XmlPropertyParsingException {
 		super(propertyNode);
@@ -51,23 +51,18 @@ public class XmlStringListProperty extends XmlListProperty{
 	}
 
 	public void setValue(int value) {
+		int oldValue = this.value;
 		this.value = value;
+		this.propertyChangeSupport.firePropertyChange("value",oldValue,value);
 	}
 
 	public int getDefaultValue() {
 		return defaultValue;
 	}
 
-	public void setDefaultValue(int defaultValue) {
-		this.defaultValue = defaultValue;
-	}
-
 	public ArrayList<String> getPossibleValues() {
 		return possibleValues;
 	}
 
-	public void setPossibleValues(ArrayList<String> possibleValues) {
-		this.possibleValues = possibleValues;
-	}
 	
 }

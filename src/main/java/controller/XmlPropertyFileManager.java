@@ -33,7 +33,7 @@ public class XmlPropertyFileManager {
 	private DocumentBuilder documentBuilder;
 	private Document document;
 	
-	private ArrayList<XmlProperty> xmlProperties = new ArrayList<>();
+	private XmlPropertyFile xmlPropertyFile;
 
 	
 	public XmlPropertyFileManager() {
@@ -42,11 +42,11 @@ public class XmlPropertyFileManager {
 	
 	private void parseXmlFile(File file) {
 		try {
+			this.xmlPropertyFile = new XmlPropertyFile();
 			documentBuilder = factory.newDocumentBuilder();
 			this.document =  documentBuilder.parse(file);
-			//document.normalize();
 			Node properties = document.getFirstChild();
-			//this.printNode(properties);
+			// this.printNode(properties);
 			// loop the supercar child node
 	        NodeList nodeList = properties.getChildNodes();
 	        for (int i = 0; i < nodeList.getLength(); i++) {
@@ -56,16 +56,16 @@ public class XmlPropertyFileManager {
 	        		if(nodeName.equals(XmlPropertyUtils.PROPERTY_NODE_NAME)) {
 	        			String propertyType = XmlPropertyUtils.parseAttribute(propertyNode, XmlPropertyUtils.TYPE_ATTRIBUTE_NAME);
 	        			if(propertyType.equals(XmlPropertyUtils.TYPE_STRING_NAME)) {
-	        				this.xmlProperties.add(new XmlStringProperty(propertyNode));
+	        				this.xmlPropertyFile.getXmlProperties().add(new XmlStringProperty(propertyNode));
 	        			} else if (propertyType.equals(XmlPropertyUtils.TYPE_INTEGER_NAME)) {
-	        				this.xmlProperties.add(new XmlIntegerProperty(propertyNode));
+	        				this.xmlPropertyFile.getXmlProperties().add(new XmlIntegerProperty(propertyNode));
 	        			} else if (propertyType.equals(XmlPropertyUtils.TYPE_FLOAT_NAME)) {
-	        				this.xmlProperties.add(new XmlFloatProperty(propertyNode));
+	        				this.xmlPropertyFile.getXmlProperties().add(new XmlFloatProperty(propertyNode));
 	        			} else if (propertyType.equals(XmlPropertyUtils.TYPE_BOOLEAN_NAME)) {
-	        				this.xmlProperties.add(new XmlBooleanProperty(propertyNode));
+	        				this.xmlPropertyFile.getXmlProperties().add(new XmlBooleanProperty(propertyNode));
 	        			} else if (propertyType.equals(XmlPropertyUtils.TYPE_STRING_LIST_NAME)) {
 	        				XmlProperty newProp = new XmlStringListProperty(propertyNode);
-	        				this.xmlProperties.add(newProp);
+	        				this.xmlPropertyFile.getXmlProperties().add(newProp);
 	        			}
 	        		} 
 	        	}
@@ -81,11 +81,11 @@ public class XmlPropertyFileManager {
 	
 	////////// GETTERS AND SETTERS //////////
 	
-	public ArrayList<XmlProperty> getXmlProperties() {
-		return xmlProperties;
+	public XmlPropertyFile getXmlPropertyFile() {
+		return this.xmlPropertyFile;
 	}
 
-	public void setXmlProperties(ArrayList<XmlProperty> xmlProperties) {
-		this.xmlProperties = xmlProperties;
+	public void setXmlPropertyFile(XmlPropertyFile xmlPropertyFile) {
+		this.xmlPropertyFile = xmlPropertyFile;
 	}
 }

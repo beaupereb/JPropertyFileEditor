@@ -50,7 +50,9 @@ public class XmlFloatProperty extends XmlProperty{
 	
 	
 	public void setValue(Float value) {
+		Float oldValue = this.value;
 		this.value = value;
+		this.propertyChangeSupport.firePropertyChange("value",oldValue,value);
 	}
 	
 	

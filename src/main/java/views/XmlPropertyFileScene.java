@@ -7,8 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import model.XmlPropertyFile;
 import properties.PropertiesListener;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.Properties;
 
@@ -19,16 +22,16 @@ import java.util.Properties;
  * @version 1.0
  * @since   2021
  */
-public class PropertiesScene extends Scene implements PropertiesListener {
+public class XmlPropertyFileScene extends Scene implements PropertyChangeListener {
 
 	private BorderPane borderPane;
 	VBox vBox = new VBox();
 	ScrollPane scrollPane = new ScrollPane(vBox);
 	
-	private Properties properties;
+	private XmlPropertyFile xmlPropertyFile;
 	
 	
-	public PropertiesScene(Parent root, double width, double height) {
+	public XmlPropertyFileScene(Parent root, double width, double height) {
 		super(root, width, height);
 		scrollPane.pannableProperty().set(true);
 		scrollPane.fitToWidthProperty().set(true);
@@ -42,15 +45,14 @@ public class PropertiesScene extends Scene implements PropertiesListener {
 		File cssFile = new File("src/main/resources/DarkTheme.css");
 		this.getStylesheets().clear();
 		this.getStylesheets().add("file:///" + cssFile.getAbsolutePath().replace("\\", "/"));
-		RootApplication.getInstance().getPropertiesListeners().add(this);
 	}
 	
-	private void updateVIew() {
+	private void updateView() {
         Runnable runnable = () -> {
-        	
-        	properties.forEach(
-  		          (key, value) -> {
-  		        	  vBox.getChildren().add(new PropertyNode((String) key, (String) value));
+
+			xmlPropertyFile.getXmlProperties().forEach(
+  		          (xmlProperty) -> {
+  		        	  vBox.getChildren().add(new PropertyNode(xmlProperty));
   		          }
   		      );
 		};
@@ -58,16 +60,15 @@ public class PropertiesScene extends Scene implements PropertiesListener {
 	}
 
 
-	private void setProperties(Properties properties) {
-		this.properties = properties;
-		this.updateVIew();
+	private void setXmlPropertyFile(XmlPropertyFile xmlPropertyFile) {
+		this.xmlPropertyFile = xmlPropertyFile;
+		this.xmlPropertyFile.addPropertyChangeListener(this);
+		this.updateView();
 	}
+
 
 	@Override
-	public void onPropertiesChange(Properties properties) {
-		this.setProperties(properties);
+	public void propertyChange(PropertyChangeEvent evt) {
+		this.updateView();
 	}
-	
-	
-
 }

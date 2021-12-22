@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import properties.PropertiesListener;
-import views.PropertiesScene;
+import views.XmlPropertyFileScene;
 import views.RootMenuBar;
 
 import java.io.File;
@@ -37,7 +37,7 @@ public class RootApplication extends Application {
 	private Stage primaryStage;
 	private BorderPane borderPane = new BorderPane();
 	private RootMenuBar rootToolBar = RootMenuBar.getInstance();
-	private PropertiesScene propertiesScene;
+	private XmlPropertyFileScene propertiesScene;
 
 	
 	private Properties properties = new Properties();;
@@ -63,7 +63,7 @@ public class RootApplication extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("DesignPatterns");
 		this.borderPane.setTop(this.rootToolBar);
-		this.propertiesScene = new PropertiesScene(borderPane, 700, 400);
+		this.propertiesScene = new XmlPropertyFileScene(borderPane, 700, 400);
 		this.primaryStage.setScene(propertiesScene);
 		this.primaryStage.show();
 	}

@@ -3,6 +3,7 @@ package views;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import model.XmlProperty;
 
 /**
  * //TODO Write javadoc
@@ -13,13 +14,13 @@ import javafx.scene.layout.GridPane;
  */
 public class PropertyNode extends GridPane{
 	
-	public PropertyNode (String key, String value) {
+	public PropertyNode (XmlProperty xmlProperty) {
 		 this.setPadding(new Insets(20));
 		 this.setHgap(25);
 		 this.setVgap(15);
 		 
-		 this.add(new Label(key), 0, 0, 1, 1);
-		 this.add(new Label(value), 1, 0, 1, 1);
+		 this.add(new Label(xmlProperty.getName()), 0, 0, 1, 1);
+		 this.add(new Label(xmlProperty.getStringValue()), 1, 0, 1, 1);
 	}
 
 }

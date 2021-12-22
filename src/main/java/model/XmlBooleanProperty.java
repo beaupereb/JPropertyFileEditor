@@ -49,7 +49,9 @@ public class XmlBooleanProperty extends XmlProperty{
 	
 	
 	public void setValue(Boolean value) {
+		Boolean oldValue = this.value;
 		this.value = value;
+		this.propertyChangeSupport.firePropertyChange("value",oldValue,value);
 	}
 	
 	

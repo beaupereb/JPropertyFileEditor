@@ -4,6 +4,9 @@ import org.w3c.dom.Node;
 import properties.XmlPropertyParsingException;
 import properties.XmlPropertyUtils;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 
 /**
  * //TODO Write javadoc
@@ -13,6 +16,8 @@ import properties.XmlPropertyUtils;
  * @since   2021
  */
 public abstract class XmlProperty implements Comparable {
+
+	protected PropertyChangeSupport propertyChangeSupport;
 
 	protected String type;
 	protected String name;
@@ -27,6 +32,8 @@ public abstract class XmlProperty implements Comparable {
 		}
 		this.description = XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DESCRIPTION_NODE_NAME);
 		this.section = XmlPropertyUtils.parseAttribute(propertyNode, XmlPropertyUtils.SECTION_ATTRIBUTE_NAME);
+
+		propertyChangeSupport = new PropertyChangeSupport(this);
 	}
 	
 
@@ -47,42 +54,33 @@ public abstract class XmlProperty implements Comparable {
 		stringBuilder.append("{Description=" +this.getDescription() +"}");
 		return stringBuilder.toString();
 	}
+
+	public synchronized void addPropertyChangeListener(PropertyChangeListener listener) {
+		this.propertyChangeSupport.addPropertyChangeListener(listener);
+	}
+
+	public synchronized void removePropertyChangeListener(PropertyChangeListener listener) {
+		this.propertyChangeSupport.removePropertyChangeListener(listener);
+	}
 	
+	////////// GETTERS AND SETTERS //////////
+
 	public abstract String getStringValue();
 	public abstract String getStringDefaultValue();
 	
-	////////// GETTERS AND SETTERS //////////
-	
 	public String getName() {
 		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getSection() {
 		return section;
 	}
 
-	public void setSection(String section) {
-		this.section = section;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getType() {
 		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 }

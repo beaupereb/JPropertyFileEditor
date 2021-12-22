@@ -41,7 +41,7 @@ public class GeneratePropertyFileCommand extends Command {
 		            Properties prop = new Properties();
 
 		            // set the properties values
-		            for (XmlProperty xmlProperty : RootApplication.getInstance().getPropertiesXmlFileManager().getXmlProperties()) {
+		            for (XmlProperty xmlProperty : RootApplication.getInstance().getPropertiesXmlFileManager().getXmlPropertyFile().getXmlProperties()) {
 		            	prop.put(xmlProperty.getName(), xmlProperty.getStringValue());
 		            }
 		            

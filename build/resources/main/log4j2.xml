@@ -18,13 +18,13 @@ Dans le cas où vous souhaitez injecter des valeurs, c'est la séquence {} qui p
     <Appenders>
             
         <Console name="stdout" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} | %-6p | %c | %m %n" />
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} | %-6p | %C.%M - line:%L | %m %n" />
         </Console>
         
     </Appenders>
 
     <Loggers>
-        <Root level="info">
+        <Root level="debug">
             <AppenderRef ref="stdout" />
         </Root> 
     </Loggers>

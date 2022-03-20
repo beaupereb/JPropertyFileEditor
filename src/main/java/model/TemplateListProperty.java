@@ -1,7 +1,7 @@
 package model;
 
 import org.w3c.dom.Node;
-import properties.XmlPropertyParsingException;
+import properties.TemplatePropertyParsingException;
 
 import java.util.List;
 
@@ -13,13 +13,13 @@ import java.util.List;
  * @version 1.0
  * @since   2021
  */
-public abstract class XmlListProperty extends XmlProperty{
+public abstract class TemplateListProperty extends TemplateProperty {
 
 	
 	private List<String> possibleValues;
 	
 
-	public XmlListProperty(Node propertyNode) throws XmlPropertyParsingException {
+	public TemplateListProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		super(propertyNode);
 	}
 

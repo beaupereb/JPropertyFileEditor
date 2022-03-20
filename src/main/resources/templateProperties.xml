@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
 	<property type="Boolean" section="A">
-		<name>peroperty1</name>
+		<name>property1</name>
 		<default>false</default>
 		<value>true</value>
 	</property>
 	<property type="StringList" section="A">
-		<name>peroperty2</name>
+		<name>property2</name>
 		<default>0</default>
 		<value>0</value>
 		<possibleValues>
@@ -24,5 +24,10 @@
 		<name>property4</name>
 		<default>250</default>
 		<value>200</value>
+	</property>
+	<property type="Float" section="A">
+		<name>property5</name>
+		<default>250</default>
+		<value>200.15</value>
 	</property>
 </properties>

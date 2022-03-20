@@ -7,6 +7,6 @@ package properties;
  * @version 1.0
  * @since   2021
  */
-public class XmlPropertyParsingException extends Exception {
+public class TemplatePropertyParsingException extends Exception {
 
 }

@@ -1,8 +1,8 @@
 package model;
 
 import org.w3c.dom.Node;
-import properties.XmlPropertyParsingException;
-import properties.XmlPropertyUtils;
+import properties.TemplatePropertyParsingException;
+import properties.TemplatePropertyUtils;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -15,7 +15,7 @@ import java.beans.PropertyChangeSupport;
  * @version 1.0
  * @since   2021
  */
-public abstract class XmlProperty implements Comparable {
+public abstract class TemplateProperty implements Comparable {
 
 	protected PropertyChangeSupport propertyChangeSupport;
 
@@ -24,14 +24,14 @@ public abstract class XmlProperty implements Comparable {
 	protected String description;
 	protected String section;
 	
-	public XmlProperty(Node propertyNode) throws XmlPropertyParsingException {
+	public TemplateProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		
-		this.name = XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.NAME_NODE_NAME);
+		this.name = TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.NAME_NODE_NAME);
 		if (this.name.isBlank()) {
-			throw new XmlPropertyParsingException();
+			throw new TemplatePropertyParsingException();
 		}
-		this.description = XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DESCRIPTION_NODE_NAME);
-		this.section = XmlPropertyUtils.parseAttribute(propertyNode, XmlPropertyUtils.SECTION_ATTRIBUTE_NAME);
+		this.description = TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DESCRIPTION_NODE_NAME);
+		this.section = TemplatePropertyUtils.parseAttribute(propertyNode, TemplatePropertyUtils.SECTION_ATTRIBUTE_NAME);
 
 		propertyChangeSupport = new PropertyChangeSupport(this);
 	}

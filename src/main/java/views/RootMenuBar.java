@@ -43,7 +43,7 @@ public class RootMenuBar extends MenuBar{
 	//////////SINGLETON PATTERN //////////
 		
 	private RootMenuBar() {
-		LOGGER.info("Create object");
+		LOGGER.info("Create singleton");
 		
 		 this.fileMenu.getItems().addAll(this.newItem, this.openFileItem, this.exitItem);
 		 this.editMenu.getItems().addAll(this.copyItem, this.pasteItem);

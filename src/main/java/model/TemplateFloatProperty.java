@@ -3,8 +3,8 @@ package model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
-import properties.XmlPropertyParsingException;
-import properties.XmlPropertyUtils;
+import properties.TemplatePropertyParsingException;
+import properties.TemplatePropertyUtils;
 
 
 /**
@@ -14,18 +14,18 @@ import properties.XmlPropertyUtils;
  * @version 1.0
  * @since   2021
  */
-public class XmlFloatProperty extends XmlProperty{
+public class TemplateFloatProperty extends TemplateProperty {
 	
-	private static final Logger LOGGER = LogManager.getLogger(XmlFloatProperty.class);
+	private static final Logger LOGGER = LogManager.getLogger(TemplateFloatProperty.class);
 	
 	private float value;
 	private float defaultValue;
 
-	public XmlFloatProperty(Node propertyNode) throws XmlPropertyParsingException {
+	public TemplateFloatProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		super(propertyNode);
-		this.type = XmlPropertyUtils.TYPE_FLOAT_NAME;
-		this.value = Float.parseFloat(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.VALUE_NODE_NAME));
-		this.defaultValue = Float.parseFloat(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DEFAULT_VALUE_NODE_NAME));
+		this.type = TemplatePropertyUtils.TYPE_FLOAT_NAME;
+		this.value = Float.parseFloat(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.VALUE_NODE_NAME));
+		this.defaultValue = Float.parseFloat(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DEFAULT_VALUE_NODE_NAME));
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
 

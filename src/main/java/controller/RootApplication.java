@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import properties.PropertiesListener;
-import views.XmlPropertyFileScene;
+import views.TemplatePropertyFileScene;
 import views.RootMenuBar;
 
 import java.io.File;
@@ -37,12 +37,12 @@ public class RootApplication extends Application {
 	private Stage primaryStage;
 	private BorderPane borderPane = new BorderPane();
 	private RootMenuBar rootToolBar = RootMenuBar.getInstance();
-	private XmlPropertyFileScene propertiesScene;
+	private TemplatePropertyFileScene templatePropertyFileScene;
 
 	
 	private Properties properties = new Properties();;
 	private CommandInvoker commandInvoker = CommandInvoker.getInstance();
-	private XmlPropertyFileManager propertiesXmlFileManager = new XmlPropertyFileManager();
+	private TemplatePropertyFileManager templatePropertyFileManager;
 
 	//////////SINGLETON PATTERN //////////
 
@@ -60,12 +60,14 @@ public class RootApplication extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		LOGGER.info("start");
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("DesignPatterns");
+		this.primaryStage.setTitle("Property file editor");
 		this.borderPane.setTop(this.rootToolBar);
-		this.propertiesScene = new XmlPropertyFileScene(borderPane, 700, 400);
-		this.primaryStage.setScene(propertiesScene);
+		this.templatePropertyFileScene = new TemplatePropertyFileScene(borderPane, 700, 400);
+		this.primaryStage.setScene(templatePropertyFileScene);
 		this.primaryStage.show();
+		this.templatePropertyFileManager = new TemplatePropertyFileManager();
 	}
 
 	////////// CLASS METHODS //////////
@@ -105,13 +107,12 @@ public class RootApplication extends Application {
 		return this.propertiesListeners;
 	}
 
-	public XmlPropertyFileManager getPropertiesXmlFileManager() {
-		return propertiesXmlFileManager;
+	public TemplatePropertyFileManager getTemplatePropertyFileManager() {
+		return templatePropertyFileManager;
 	}
 
-	public void setPropertiesXmlFileManager(XmlPropertyFileManager propertiesXmlFileManager) {
-		this.propertiesXmlFileManager = propertiesXmlFileManager;
+	public TemplatePropertyFileScene getTemplatePropertyFileScene() {
+		return templatePropertyFileScene;
 	}
-	
 }
 

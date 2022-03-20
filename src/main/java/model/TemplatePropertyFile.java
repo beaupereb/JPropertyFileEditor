@@ -4,13 +4,13 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class XmlPropertyFile {
+public class TemplatePropertyFile {
 
     protected PropertyChangeSupport propertyChangeSupport;
 
-    private ArrayList<XmlProperty> xmlProperties = new ArrayList<>();
+    private ArrayList<TemplateProperty> templateProperties = new ArrayList<>();
 
-    public XmlPropertyFile () {
+    public TemplatePropertyFile() {
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
 
@@ -22,13 +22,13 @@ public class XmlPropertyFile {
         propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
-    public ArrayList<XmlProperty> getXmlProperties() {
-        return xmlProperties;
+    public ArrayList<TemplateProperty> getTemplateProperties() {
+        return templateProperties;
     }
 
-    public void setXmlProperties(ArrayList<XmlProperty> xmlProperties) {
-        ArrayList<XmlProperty> oldValue = this.xmlProperties;
-        this.xmlProperties = xmlProperties;
-        this.propertyChangeSupport.firePropertyChange("xmlProperties", oldValue, xmlProperties);
+    public void setTemplateProperties(ArrayList<TemplateProperty> templateProperties) {
+        ArrayList<TemplateProperty> oldValue = this.templateProperties;
+        this.templateProperties = templateProperties;
+        this.propertyChangeSupport.firePropertyChange("templateProperties", oldValue, templateProperties);
     }
 }

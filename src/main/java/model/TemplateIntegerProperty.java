@@ -3,8 +3,8 @@ package model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
-import properties.XmlPropertyParsingException;
-import properties.XmlPropertyUtils;
+import properties.TemplatePropertyParsingException;
+import properties.TemplatePropertyUtils;
 
 
 /**
@@ -14,18 +14,18 @@ import properties.XmlPropertyUtils;
  * @version 1.0
  * @since   2021
  */
-public class XmlIntegerProperty extends XmlProperty{
+public class TemplateIntegerProperty extends TemplateProperty {
 	
-	private static final Logger LOGGER = LogManager.getLogger(XmlIntegerProperty.class);
+	private static final Logger LOGGER = LogManager.getLogger(TemplateIntegerProperty.class);
 	
 	private int value;
 	private int defaultValue;
 
-	public XmlIntegerProperty(Node propertyNode) throws XmlPropertyParsingException {
+	public TemplateIntegerProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		super(propertyNode);
-		this.type = XmlPropertyUtils.TYPE_INTEGER_NAME;
-		this.value = Integer.parseInt(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.VALUE_NODE_NAME));
-		this.defaultValue = Integer.parseInt(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DEFAULT_VALUE_NODE_NAME));
+		this.type = TemplatePropertyUtils.TYPE_INTEGER_NAME;
+		this.value = Integer.parseInt(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.VALUE_NODE_NAME));
+		this.defaultValue = Integer.parseInt(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DEFAULT_VALUE_NODE_NAME));
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
 	

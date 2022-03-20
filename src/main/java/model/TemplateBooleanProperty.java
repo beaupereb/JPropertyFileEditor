@@ -3,8 +3,8 @@ package model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
-import properties.XmlPropertyParsingException;
-import properties.XmlPropertyUtils;
+import properties.TemplatePropertyParsingException;
+import properties.TemplatePropertyUtils;
 
 
 /**
@@ -14,18 +14,18 @@ import properties.XmlPropertyUtils;
  * @version 1.0
  * @since   2021
  */
-public class XmlBooleanProperty extends XmlProperty{
+public class TemplateBooleanProperty extends TemplateProperty {
 	
-	private static final Logger LOGGER = LogManager.getLogger(XmlBooleanProperty.class);
+	private static final Logger LOGGER = LogManager.getLogger(TemplateBooleanProperty.class);
 	
 	private boolean value;
 	private boolean defaultValue;
 
-	public XmlBooleanProperty(Node propertyNode) throws XmlPropertyParsingException {
+	public TemplateBooleanProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		super(propertyNode);
-		this.type = XmlPropertyUtils.TYPE_BOOLEAN_NAME;
-		this.value = Boolean.parseBoolean(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.VALUE_NODE_NAME));
-		this.defaultValue = Boolean.parseBoolean(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DEFAULT_VALUE_NODE_NAME));
+		this.type = TemplatePropertyUtils.TYPE_BOOLEAN_NAME;
+		this.value = Boolean.parseBoolean(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.VALUE_NODE_NAME));
+		this.defaultValue = Boolean.parseBoolean(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DEFAULT_VALUE_NODE_NAME));
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
 

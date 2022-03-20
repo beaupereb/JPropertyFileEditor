@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @since   2021
  */
-public abstract class XmlPropertyUtils {
+public abstract class TemplatePropertyUtils {
 
 	public static final String PROPERTY_NODE_NAME = "property";
 	public static final String NAME_NODE_NAME = "name";

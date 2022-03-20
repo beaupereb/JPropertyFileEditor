@@ -3,8 +3,8 @@ package model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
-import properties.XmlPropertyParsingException;
-import properties.XmlPropertyUtils;
+import properties.TemplatePropertyParsingException;
+import properties.TemplatePropertyUtils;
 
 
 /**
@@ -14,20 +14,20 @@ import properties.XmlPropertyUtils;
  * @version 1.0
  * @since   2021
  */
-public class XmlStringProperty extends XmlProperty{
+public class TemplateStringProperty extends TemplateProperty {
 
-	private static final Logger LOGGER = LogManager.getLogger(XmlStringProperty.class);
+	private static final Logger LOGGER = LogManager.getLogger(TemplateStringProperty.class);
 	
 	
 	private String value;
 	private String defaultValue;
 	
 	
-	public XmlStringProperty(Node propertyNode) throws XmlPropertyParsingException {
+	public TemplateStringProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		super(propertyNode);
-		this.type = XmlPropertyUtils.TYPE_STRING_NAME;
-		this.value = XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.VALUE_NODE_NAME);
-		this.defaultValue = XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DEFAULT_VALUE_NODE_NAME);
+		this.type = TemplatePropertyUtils.TYPE_STRING_NAME;
+		this.value = TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.VALUE_NODE_NAME);
+		this.defaultValue = TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DEFAULT_VALUE_NODE_NAME);
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
 	

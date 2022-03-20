@@ -3,8 +3,8 @@ package model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Node;
-import properties.XmlPropertyParsingException;
-import properties.XmlPropertyUtils;
+import properties.TemplatePropertyParsingException;
+import properties.TemplatePropertyUtils;
 
 import java.util.ArrayList;
 
@@ -15,20 +15,20 @@ import java.util.ArrayList;
  * @version 1.0
  * @since   2021
  */
-public class XmlStringListProperty extends XmlListProperty{
+public class TemplateStringListProperty extends TemplateListProperty {
 	
-	private static final Logger LOGGER = LogManager.getLogger(XmlStringListProperty.class);
+	private static final Logger LOGGER = LogManager.getLogger(TemplateStringListProperty.class);
 
 	private int value;
 	private int defaultValue;
 	private ArrayList<String> possibleValues;
 	
-	public XmlStringListProperty(Node propertyNode) throws XmlPropertyParsingException {
+	public TemplateStringListProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		super(propertyNode);
-		this.type = XmlPropertyUtils.TYPE_STRING_LIST_NAME;
-		this.value = Integer.parseInt(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.VALUE_NODE_NAME));
-		this.defaultValue = Integer.parseInt(XmlPropertyUtils.parseChildNode(propertyNode, XmlPropertyUtils.DEFAULT_VALUE_NODE_NAME));
-		this.possibleValues = XmlPropertyUtils.parseListNode(propertyNode, XmlPropertyUtils.POSSIBLE_VALUES_NODE_NAME);
+		this.type = TemplatePropertyUtils.TYPE_STRING_LIST_NAME;
+		this.value = Integer.parseInt(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.VALUE_NODE_NAME));
+		this.defaultValue = Integer.parseInt(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DEFAULT_VALUE_NODE_NAME));
+		this.possibleValues = TemplatePropertyUtils.parseListNode(propertyNode, TemplatePropertyUtils.POSSIBLE_VALUES_NODE_NAME);
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
 	

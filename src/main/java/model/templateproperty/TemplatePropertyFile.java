@@ -1,4 +1,4 @@
-package model;
+package model.templateproperty;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -22,6 +22,8 @@ public class TemplatePropertyFile {
         propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
+    ////////// GETTERS AND SETTERS //////////
+
     public ArrayList<TemplateProperty> getTemplateProperties() {
         return templateProperties;
     }
@@ -31,4 +33,15 @@ public class TemplatePropertyFile {
         this.templateProperties = templateProperties;
         this.propertyChangeSupport.firePropertyChange("templateProperties", oldValue, templateProperties);
     }
+
+    public TemplateProperty getTemplatePropertyByName(String name) {
+        TemplateProperty result = null;
+        for(TemplateProperty templateProperty : this.templateProperties) {
+            if(templateProperty.getName().equals(name)) {
+                result = templateProperty;
+            }
+        }
+        return result;
+    }
+
 }

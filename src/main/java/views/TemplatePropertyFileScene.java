@@ -5,10 +5,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
-import model.*;
+import model.templateproperty.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import properties.TemplatePropertyUtils;
+import views.templatepropertynode.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -57,15 +58,15 @@ public class TemplatePropertyFileScene extends Scene implements PropertyChangeLi
   		          (templateProperty) -> {
 					  LOGGER.debug(templateProperty.getType());
 					  if (templateProperty.getType() == TemplatePropertyUtils.TYPE_BOOLEAN_NAME) {
-						  vBox.getChildren().add(new TemplateBooleanPropertyNode((TemplateBooleanProperty) templateProperty));
+						  vBox.getChildren().add(new BooleanPropertyNode((TemplateBooleanProperty) templateProperty));
 					  } else if (templateProperty.getType() == TemplatePropertyUtils.TYPE_INTEGER_NAME) {
-						  vBox.getChildren().add(new TemplateIntegerPropertyNode((TemplateIntegerProperty) templateProperty));
+						  vBox.getChildren().add(new IntegerPropertyNode((TemplateIntegerProperty) templateProperty));
 					  } else if (templateProperty.getType() == TemplatePropertyUtils.TYPE_FLOAT_NAME) {
-						  vBox.getChildren().add(new TemplateFloatPropertyNode((TemplateFloatProperty) templateProperty));
+						  vBox.getChildren().add(new FloatPropertyNode((TemplateFloatProperty) templateProperty));
 					  } else if (templateProperty.getType() == TemplatePropertyUtils.TYPE_STRING_NAME) {
-						  vBox.getChildren().add(new TemplateStringPropertyNode((TemplateStringProperty) templateProperty));
+						  vBox.getChildren().add(new StringPropertyNode((TemplateStringProperty) templateProperty));
 					  } else if (templateProperty.getType() == TemplatePropertyUtils.TYPE_STRING_LIST_NAME) {
-						  vBox.getChildren().add(new TemplateStringListPropertyNode((TemplateStringListProperty) templateProperty));
+						  vBox.getChildren().add(new StringListPropertyNode((TemplateStringListProperty) templateProperty));
 					  } else {
 						  LOGGER.error("Invalid property type");
 					  }
@@ -78,6 +79,10 @@ public class TemplatePropertyFileScene extends Scene implements PropertyChangeLi
 
 	public void setTemplatePropertyFile(TemplatePropertyFile templatePropertyFile) {
 		LOGGER.info("setTemplatePropertyFile");
+		//This view can only listen to one templatePropertyFile at once. se we remove the previous one.
+		if(this.templatePropertyFile != null) {
+			this.templatePropertyFile.removePropertyChangeListener(this);
+		}
 		this.templatePropertyFile = templatePropertyFile;
 		this.templatePropertyFile.addPropertyChangeListener(this);
 		this.updateView();

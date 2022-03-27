@@ -1,4 +1,4 @@
-package model;
+package model.templateproperty;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,24 +17,17 @@ import properties.TemplatePropertyUtils;
 public class TemplateBooleanProperty extends TemplateProperty {
 	
 	private static final Logger LOGGER = LogManager.getLogger(TemplateBooleanProperty.class);
-	
-	private boolean value;
+
 	private boolean defaultValue;
 
 	public TemplateBooleanProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		super(propertyNode);
 		this.type = TemplatePropertyUtils.TYPE_BOOLEAN_NAME;
-		this.value = Boolean.parseBoolean(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.VALUE_NODE_NAME));
 		this.defaultValue = Boolean.parseBoolean(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DEFAULT_VALUE_NODE_NAME));
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
 
 	////////// OVERRIDE METHODS //////////
-	
-	@Override
-	public String getStringValue() {
-		return "" +this.getValue();
-	}
 
 	@Override
 	public String getStringDefaultValue() {
@@ -42,18 +35,6 @@ public class TemplateBooleanProperty extends TemplateProperty {
 	}
 	
 	//////////GETTERS AND SETTERS //////////
-		
-	public Boolean getValue() {
-		return value;
-	}
-	
-	
-	public void setValue(Boolean value) {
-		Boolean oldValue = this.value;
-		this.value = value;
-		this.propertyChangeSupport.firePropertyChange("value",oldValue,value);
-	}
-	
 	
 	public Boolean getDefaultValue() {
 		return defaultValue;

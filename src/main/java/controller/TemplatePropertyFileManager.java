@@ -1,6 +1,7 @@
 package controller;
 
-import model.*;
+import javafx.stage.FileChooser;
+import model.templateproperty.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
@@ -37,10 +38,7 @@ public class TemplatePropertyFileManager {
 
 	
 	public TemplatePropertyFileManager() {
-		String templatePropertyFilePath = "src/main/resources/templateProperties.xml";
-		LOGGER.info("Object created with : templatePropertyFilePath = " +templatePropertyFilePath);
-		this.parseTemplatePropertiesFile(new File(templatePropertyFilePath));
-		RootApplication.getInstance().getTemplatePropertyFileScene().setTemplatePropertyFile(this.templatePropertyFile);
+		LOGGER.info("Object created");
 	}
 	
 	private void parseTemplatePropertiesFile(File file) {
@@ -55,6 +53,7 @@ public class TemplatePropertyFileManager {
 	        NodeList nodeList = properties.getChildNodes();
 	        for (int i = 0; i < nodeList.getLength(); i++) {
 	        	Node propertyNode = nodeList.item(i);
+				//TODO gerer le cas ou on essais d'ajouter deux properties avec le meme nom
 	        	if (propertyNode.getNodeType() == Node.ELEMENT_NODE) {
 	        		String nodeName = propertyNode.getNodeName();
 	        		if(nodeName.equals(TemplatePropertyUtils.PROPERTY_NODE_NAME)) {
@@ -83,6 +82,19 @@ public class TemplatePropertyFileManager {
 			e.printStackTrace();
 		}	
 	}
+
+	public void openTemplatePropertyFile() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setInitialDirectory(new File("src/main/resources"));
+		fileChooser.setInitialFileName("templateProperties.xml");
+		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("XML Files", "*.xml"));
+		File selectedFile = fileChooser.showOpenDialog(RootApplication.getInstance().getPrimaryStage());
+		if(selectedFile != null) {
+			LOGGER.info("Template property file open : selectedFile = " +selectedFile);
+			this.parseTemplatePropertiesFile(selectedFile);
+			RootApplication.getInstance().getTemplatePropertyFileScene().setTemplatePropertyFile(this.templatePropertyFile);
+		}
+	}
 	
 	////////// GETTERS AND SETTERS //////////
 	
@@ -90,7 +102,5 @@ public class TemplatePropertyFileManager {
 		return this.templatePropertyFile;
 	}
 
-	public void setTemplatePropertyFile(TemplatePropertyFile templatePropertyFile) {
-		this.templatePropertyFile = templatePropertyFile;
-	}
+
 }

@@ -1,7 +1,5 @@
 package command;
 
-import controller.RootApplication;
-import model.TemplateProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -41,9 +39,9 @@ public class GeneratePropertyFileCommand extends Command {
 		            Properties prop = new Properties();
 
 		            // set the properties values
-		            for (TemplateProperty templateProperty : RootApplication.getInstance().getTemplatePropertyFileManager().getTemplatePropertyFile().getTemplateProperties()) {
+		            /*for (TemplateProperty templateProperty : RootApplication.getInstance().getTemplatePropertyFileManager().getTemplatePropertyFile().getTemplateProperties()) {
 		            	prop.put(templateProperty.getName(), templateProperty.getStringValue());
-		            }
+		            }*/
 		            
 
 		            // save properties to project root folder

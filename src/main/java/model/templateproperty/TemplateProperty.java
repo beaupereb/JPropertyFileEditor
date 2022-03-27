@@ -1,11 +1,9 @@
-package model;
+package model.templateproperty;
 
 import org.w3c.dom.Node;
 import properties.TemplatePropertyParsingException;
 import properties.TemplatePropertyUtils;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 
 /**
@@ -17,7 +15,6 @@ import java.beans.PropertyChangeSupport;
  */
 public abstract class TemplateProperty implements Comparable {
 
-	protected PropertyChangeSupport propertyChangeSupport;
 
 	protected String type;
 	protected String name;
@@ -33,7 +30,6 @@ public abstract class TemplateProperty implements Comparable {
 		this.description = TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DESCRIPTION_NODE_NAME);
 		this.section = TemplatePropertyUtils.parseAttribute(propertyNode, TemplatePropertyUtils.SECTION_ATTRIBUTE_NAME);
 
-		propertyChangeSupport = new PropertyChangeSupport(this);
 	}
 	
 
@@ -48,24 +44,16 @@ public abstract class TemplateProperty implements Comparable {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("{Type=" +this.getType()+"}");
 		stringBuilder.append("{Name=" +this.getName() +"}");
-		stringBuilder.append("{Value=" +this.getStringValue() +"}");
 		stringBuilder.append("{Default value=" +this.getStringDefaultValue() +"}");
 		stringBuilder.append("{Section=" +this.getSection() +"}");
 		stringBuilder.append("{Description=" +this.getDescription() +"}");
 		return stringBuilder.toString();
 	}
 
-	public synchronized void addPropertyChangeListener(PropertyChangeListener listener) {
-		this.propertyChangeSupport.addPropertyChangeListener(listener);
-	}
 
-	public synchronized void removePropertyChangeListener(PropertyChangeListener listener) {
-		this.propertyChangeSupport.removePropertyChangeListener(listener);
-	}
 	
 	////////// GETTERS AND SETTERS //////////
 
-	public abstract String getStringValue();
 	public abstract String getStringDefaultValue();
 	
 	public String getName() {

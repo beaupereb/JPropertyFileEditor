@@ -1,4 +1,4 @@
-package model;
+package model.templateproperty;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,14 +17,12 @@ import properties.TemplatePropertyUtils;
 public class TemplateFloatProperty extends TemplateProperty {
 	
 	private static final Logger LOGGER = LogManager.getLogger(TemplateFloatProperty.class);
-	
-	private float value;
+
 	private float defaultValue;
 
 	public TemplateFloatProperty(Node propertyNode) throws TemplatePropertyParsingException {
 		super(propertyNode);
 		this.type = TemplatePropertyUtils.TYPE_FLOAT_NAME;
-		this.value = Float.parseFloat(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.VALUE_NODE_NAME));
 		this.defaultValue = Float.parseFloat(TemplatePropertyUtils.parseChildNode(propertyNode, TemplatePropertyUtils.DEFAULT_VALUE_NODE_NAME));
 		LOGGER.info("Property parsed with : " +this.toString());
 	}
@@ -33,29 +31,13 @@ public class TemplateFloatProperty extends TemplateProperty {
 	////////// OVERRIDE METHODS //////////
 
 	@Override
-	public String getStringValue() {
-		return "" +this.getValue();
-	}
-
-	@Override
 	public String getStringDefaultValue() {
 		return "" +this.getDefaultValue();
 	}
 
 	//////////GETTERS AND SETTERS //////////
-		
-	public Float getValue() {
-		return value;
-	}
-	
-	
-	public void setValue(Float value) {
-		Float oldValue = this.value;
-		this.value = value;
-		this.propertyChangeSupport.firePropertyChange("value",oldValue,value);
-	}
-	
-	
+
+
 	public Float getDefaultValue() {
 		return defaultValue;
 	}

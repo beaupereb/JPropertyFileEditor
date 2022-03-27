@@ -1,5 +1,11 @@
 package properties;
 
+import controller.RootApplication;
+import model.Property;
+import model.templateproperty.TemplateProperty;
+import model.templateproperty.TemplatePropertyFile;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -15,9 +21,11 @@ import java.util.ArrayList;
  */
 public abstract class TemplatePropertyUtils {
 
+	private static final Logger LOGGER = LogManager.getLogger(TemplatePropertyUtils.class);
+
 	public static final String PROPERTY_NODE_NAME = "property";
 	public static final String NAME_NODE_NAME = "name";
-	public static final String VALUE_NODE_NAME = "value";
+	//public static final String VALUE_NODE_NAME = "value"; //Tempalte file no more stores the value of the property
 	public static final String DEFAULT_VALUE_NODE_NAME = "default";
 	public static final String DESCRIPTION_NODE_NAME = "description";
 	
@@ -77,5 +85,7 @@ public abstract class TemplatePropertyUtils {
 		}
 		return result;
 	}
-	
+
+
+
 }

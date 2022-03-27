@@ -6,7 +6,8 @@ module JPropertyFileEditor.main {
     requires java.xml;
     requires java.desktop;
 
-
+    requires org.apache.commons.configuration2;
+    requires jevolvedproperties.main;
 
     exports controller;
 

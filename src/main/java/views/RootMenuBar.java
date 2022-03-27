@@ -2,7 +2,8 @@ package views;
 
 import command.CommandInvoker;
 import command.GeneratePropertyFileCommand;
-import command.OpenFileChooserCommand;
+import command.OpenPropertiesFileCommand;
+import command.OpenTemplateFileCommand;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -31,7 +32,8 @@ public class RootMenuBar extends MenuBar{
     
     // Create MenuItems
     MenuItem newItem = new MenuItem("New");
-    MenuItem openFileItem = new MenuItem("Open File");
+    MenuItem openPropertiesFileItem = new MenuItem("Open properties file");
+	MenuItem openTemplateFileItem = new MenuItem("Open template file");
     MenuItem exitItem = new MenuItem("Exit");
    
     MenuItem copyItem = new MenuItem("Copy");
@@ -45,15 +47,19 @@ public class RootMenuBar extends MenuBar{
 	private RootMenuBar() {
 		LOGGER.info("Create singleton");
 		
-		 this.fileMenu.getItems().addAll(this.newItem, this.openFileItem, this.exitItem);
+		 this.fileMenu.getItems().addAll(this.newItem, this.openPropertiesFileItem, this.openTemplateFileItem ,this.exitItem);
 		 this.editMenu.getItems().addAll(this.copyItem, this.pasteItem);
 		 this.toolsMenu.getItems().addAll(this.generatePropertyFileItem);
 		 this.getMenus().addAll(this.fileMenu, this.editMenu, this.toolsMenu, this.helpMenu);
 	       
 		
 
-		 openFileItem.setOnAction(actionEvent -> {
-			commandInvoker.executeCommand(new OpenFileChooserCommand());
+		 openPropertiesFileItem.setOnAction(actionEvent -> {
+			commandInvoker.executeCommand(new OpenPropertiesFileCommand());
+		});
+
+		openTemplateFileItem.setOnAction(actionEvent -> {
+			commandInvoker.executeCommand(new OpenTemplateFileCommand());
 		});
 		 
 		 generatePropertyFileItem.setOnAction(actionEvent -> {

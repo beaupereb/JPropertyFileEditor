@@ -1,4 +1,4 @@
-package model;
+package model.templateproperty;
 
 import org.w3c.dom.Node;
 import properties.TemplatePropertyParsingException;
